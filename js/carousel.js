@@ -49,6 +49,14 @@ if ($(".thumbs-swiper-column").length > 0) {
       swiper: swiperthumbs,
     },
   });
+
+  swiper2.on('slideChange', function () {
+    var titles = ["In-Office Coaching Classes", "Agent Training & Education", "Premium Property Listings", "Free Real Estate Webinar"];
+    $('.title-large.title').text(titles[this.activeIndex]);
+  });
+
+  // Set initial title
+  $('.title-large.title').text("In-Office Coaching Classes");
 }
 
 if ($(".slider-sw-home2").length > 0) {
