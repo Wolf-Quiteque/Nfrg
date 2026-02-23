@@ -283,6 +283,152 @@
         .mobile-menu .mobi-icon-box .box div {
             color: #ffffff !important;
         }
+
+        .nfrg-disclosure-strip {
+            background: linear-gradient(180deg, #fff6df 0%, #ffffff 90%);
+            padding: 26px 0 32px;
+        }
+
+        .nfrg-disclosure-card {
+            border-radius: 18px;
+            border: 1px solid #ead7ab;
+            background: #ffffff;
+            box-shadow: 0 18px 40px rgba(125, 93, 22, 0.12);
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .nfrg-disclosure-kicker {
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 12px;
+            font-weight: 700;
+            color: #b4861f;
+            margin-bottom: 8px;
+        }
+
+        .nfrg-disclosure-title {
+            margin: 0 0 6px;
+            font-size: 22px;
+            font-weight: 700;
+            color: #3a2a10;
+        }
+
+        .nfrg-disclosure-desc {
+            margin: 0;
+            color: #6f5a2a;
+        }
+
+        .nfrg-disclosure-action .tf-btn {
+            white-space: nowrap;
+        }
+
+        .nfrg-lpt-section {
+            padding: 56px 0;
+            background: radial-gradient(circle at 20% 20%, #f7f4ee 0%, #ffffff 60%);
+        }
+
+        .nfrg-lpt-card {
+            border-radius: 24px;
+            border: 1px solid #efe3c7;
+            background: #ffffff;
+            box-shadow: 0 22px 55px rgba(58, 42, 16, 0.12);
+            padding: 28px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+            gap: 24px;
+            align-items: center;
+        }
+
+        .nfrg-lpt-square {
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #efe3c7;
+            background: #ffffff;
+            width: 100%;
+            max-width: 320px;
+            aspect-ratio: 1 / 1;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .nfrg-lpt-square img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .nfrg-lpt-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .nfrg-lpt-kicker {
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-size: 12px;
+            font-weight: 700;
+            color: #a0771c;
+        }
+
+        .nfrg-lpt-title {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+            color: #2d2313;
+        }
+
+        .nfrg-lpt-desc {
+            margin: 0;
+            color: #5c4a26;
+        }
+
+        .nfrg-lpt-banner-strip {
+            padding: 48px 0 56px;
+            background: linear-gradient(180deg, #ffffff 0%, #f7f4ee 100%);
+        }
+
+        .nfrg-lpt-banner-frame {
+            border-radius: 22px;
+            overflow: hidden;
+            border: 1px solid #efe3c7;
+            box-shadow: 0 18px 45px rgba(58, 42, 16, 0.12);
+            background: #ffffff;
+        }
+
+        .nfrg-lpt-banner-frame img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        @media (max-width: 767px) {
+            .nfrg-disclosure-card {
+                padding: 18px;
+            }
+
+            .nfrg-lpt-title {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .nfrg-lpt-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .nfrg-lpt-copy {
+                align-items: center;
+            }
+        }
     </style>
 
     <!-- Favicon and Touch Icons  -->
@@ -441,21 +587,24 @@
                                 <div class="col-lg-6">
                                     <div class="slider-content">
                                         <div class="heading">
+                                            <div class="text-subtitle text-white wow fadeInUp" data-wow-delay=".1s">
+                                                Required Disclosure
+                                            </div>
                                             <h1 class="title-large title text-white wow fadeIn animationtext clip"
                                                 data-wow-delay=".2s" data-wow-duration="2000ms">
-                                                Turn More Conversations
+                                                Texas Information About
                                                 <br>
-                                                Into Closings
+                                                Brokerage Services
                                             </h1>
                                             <p class="subtitle text-white body-2 wow fadeInUp" data-wow-delay=".2s">
-                                                Realty Services provided bxy those who've served! We combine military-grade discipline
-                                                with agent coaching, elite marketing support, and a relentless drive to honor every
-                                                commitment on time.
+                                                Texas law requires this disclosure for all brokerages. Review how brokerage
+                                                relationships and services are defined before engaging in real estate services.
                                             </p>
 
                                             <div class="tf-btn wow fadeInUp" style="margin-top:10px" data-wow-delay=".3s">
-                                                <a href="##webinar" class="tf-button style-1">
-                                                    Sighn up now
+                                                <a href="https://www.har.com/mhf/terms/dispBrokerInfo?sitetype=aws&amp;cid=567537"
+                                                    class="tf-button style-1" target="_blank" rel="noopener noreferrer">
+                                                    Learn more
                                                 </a>
                                              
                                             </div>
@@ -464,7 +613,7 @@
                                         <div class="wrap-search-link">
                                             <div class="categories-list style-2">
                                                 <a href="##coaching"><i class="icon icon-house-fill"></i> Coaching
-                                                    Classes</a>]
+                                                    Classes</a>
                                                 <a href="##bootcamp"><i class="icon icon-office-fill"></i> Webinars</a>
                                             </div>
                                         </div>
@@ -511,6 +660,22 @@
             </section>
 
             <!-- End Slider -->
+            <section class="nfrg-disclosure-strip">
+                <div class="container">
+                    <div class="nfrg-disclosure-card">
+                        <div class="nfrg-disclosure-copy">
+                            <div class="nfrg-disclosure-kicker">Required Notice</div>
+                            <div class="nfrg-disclosure-title">Texas Consumer Protection Notice</div>
+                            <p class="nfrg-disclosure-desc">State-mandated consumer protection notice from the Texas
+                                Real Estate Commission.</p>
+                        </div>
+                        <div class="nfrg-disclosure-action">
+                            <a class="tf-btn btn-line" href="https://content.harstatic.com/pdf/TREC_CPN.pdf"
+                                target="_blank" rel="noopener noreferrer">View Notice</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <!-- Content Pillars 
             <section class="flat-section flat-recommended">
                 <div class="container">
@@ -3237,6 +3402,22 @@
     </div>
 </section>
 
+    <section class="nfrg-lpt-section">
+        <div class="container">
+            <div class="nfrg-lpt-card">
+                <div class="nfrg-lpt-copy">
+                    <div class="nfrg-lpt-kicker">Brokered By</div>
+                    <h3 class="nfrg-lpt-title">LPT Realty LLC</h3>
+                    <p class="nfrg-lpt-desc">A national brokerage partner powering elite service, strong compliance,
+                        and next-level support.</p>
+                </div>
+                <div class="nfrg-lpt-square">
+                    <img src="images/lpt/lpt_square.jpg" alt="LPT Realty logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- NFRG Intro Video -->
     <section id="inside-nfrg" class="flat-section nfrg-intro-video-section">
         <div class="container">
@@ -3897,7 +4078,7 @@
                 </div>
             </div>
             <div class="content-left img-animation wow">
-                <img class="lazyload" data-src="images/6N4A1003.jpg" src="images/6N4A1003.jpg" alt="Ashley profile">
+                <img class="lazyload" data-src="images/ACHPic1.jpg" src="images/ACHPic1.jpg" alt="Ashley profile">
             </div>
         </div>
     </section>
@@ -4047,6 +4228,13 @@
             </div>
         </div>
     </section>
+    <section class="nfrg-lpt-banner-strip">
+        <div class="container">
+            <div class="nfrg-lpt-banner-frame">
+                <img src="images/lpt/lptreality_long_banner.jpeg" alt="LPT Realty banner">
+            </div>
+        </div>
+    </section>
     <!-- footer -->
     <footer class="footer">
         <div class="top-footer">
@@ -4165,15 +4353,14 @@
         <div class="bottom-footer">
             <div class="container">
                 <div class="content-footer-bottom">
-                    <div class="copyright">©2025 NFRG. All Rights Reserved. Develop by Ragy Quiteque</div>
+                    <div class="copyright">©2025 NFRG. All Rights Reserved. Developed by Ragy Quiteque</div>
                     <div class="caption-1 text-variant-2 mt-2">Brokered by LPT Realty LLC.</div>
 
                     <ul class="menu-bottom">
-                        <li><a href="#our-service.html">Terms Of Services</a> </li>
+                        <li><a href="#our-service.html">Terms of Service</a> </li>
 
                         <li><a href="#pricing.html">Privacy Policy</a> </li>
                         <li><a href="#contact.html">Cookie Policy</a> </li>
-
                     </ul>
                 </div>
             </div>
@@ -4239,7 +4426,7 @@
                         </div>
                         <div class="box box-btn">
                             <a href="#dashboard.html" class="tf-btn primary w-100">Login</a>
-                            <div class="text text-center">Donâ€™t you have an account? <a href="##modalRegister"
+                            <div class="text text-center">Don't you have an account? <a href="##modalRegister"
                                     data-bs-toggle="modal" class="text-primary">Register</a></div>
                         </div>
                         <p class="box text-center caption-2">or login with</p>
@@ -4328,7 +4515,7 @@
                         </div>
                         <div class="box box-btn">
                             <a href="#dashboard.html" class="tf-btn primary w-100">Sign Up</a>
-                            <div class="text text-center">Donâ€™t you have an account? <a href="##modalLogin"
+                            <div class="text text-center">Don't you have an account? <a href="##modalLogin"
                                     data-bs-toggle="modal" class="text-primary">Sign In</a></div>
                         </div>
                         <p class="box text-center caption-2">or login with</p>
