@@ -156,6 +156,42 @@ if ($(".tf-sw-latest").length > 0) {
   });
 }
 
+if ($(".tf-sw-listings").length > 0) {
+  var preview = $(".tf-sw-listings").data("preview");
+  var tablet = $(".tf-sw-listings").data("tablet");
+  var mobile = $(".tf-sw-listings").data("mobile");
+  var spacingLg = $(".tf-sw-listings").data("space-lg");
+  var spacingMd = $(".tf-sw-listings").data("space-md");
+  var spacing = $(".tf-sw-listings").data("space");
+  var swiper = new Swiper(".tf-sw-listings", {
+    slidesPerView: mobile,
+    spaceBetween: spacing,
+    loop: true,
+    autoplay: {
+      delay: 1500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".sw-pagination-listings",
+      clickable: true,
+    },
+    breakpoints: {
+      575: {
+        slidesPerView: mobile,
+        spaceBetween: spacing,
+      },
+      768: {
+        slidesPerView: tablet,
+        spaceBetween: spacingMd,
+      },
+      1150: {
+        slidesPerView: preview,
+        spaceBetween: spacingLg,
+      },
+    },
+  });
+}
+
 if ($(".tf-sw-testimonial").length > 0) {
   var mobile = $(".tf-sw-testimonial").data("mobile");
   var mobileSm = $(".tf-sw-testimonial").data("mobile-sm");
