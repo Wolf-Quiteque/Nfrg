@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Puppeteer Chromium cache (downloaded on first npm install)
+.cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+*.swp
+*.swo
+
+# Logs
+npm-debug.log*
+*.log

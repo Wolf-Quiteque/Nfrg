@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>Property Listings | Navy Fellas Realty Group</title>
+    <meta name="keywords" content="Houston real estate listings, homes for sale Houston, sold homes Houston, HAR listings, Navy Fellas Realty">
+    <meta name="description" content="Browse active listings, sold properties, and search available homes with Navy Fellas Realty Group – powered by HAR.com IDX.">
+    <meta name="author" content="Navy Fellas Realty Group">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- font -->
+    <link rel="stylesheet" href="fonts/fonts.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="fonts/font-icons.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="images/logo/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="images/logo/favicon.png">
+
+    <style>
+        /* ── Base ── */
+        html { scroll-behavior: smooth; }
+
+        body { padding-top: 78px; }
+
+        /* ── Navbar dark ── */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1200;
+        }
+
+        .main-header,
+        .main-header.is-fixed,
+        .main-header .header-lower,
+        .main-header.is-fixed .header-lower {
+            background-color: #161e2d;
+        }
+
+        .main-header .main-menu .navigation > li > a,
+        .main-header .mobile-nav-toggler span,
+        .main-header .mobile-nav-toggler span::before,
+        .main-header .mobile-nav-toggler span::after {
+            color: #ffffff !important;
+        }
+
+        .main-header.is-fixed {
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .main-header .inner-header-right .btn-login {
+            color: #161e2d !important;
+        }
+
+        .main-header .main-menu .navigation > li > a::before {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .main-header .main-menu .navigation > li:hover > a,
+        .main-header .main-menu .navigation > li.current > a {
+            color: #ffffff !important;
+        }
+
+        .mobile-menu .menu-box {
+            background-color: #161e2d;
+        }
+
+        .mobile-menu .navigation li > a,
+        .mobile-menu .login-box a,
+        .mobile-menu .login-box span,
+        .mobile-menu .mobi-icon-box .box .icon,
+        .mobile-menu .mobi-icon-box .box a,
+        .mobile-menu .mobi-icon-box .box div {
+            color: #ffffff !important;
+        }
+
+        /* ── Page hero ── */
+        .listings-hero {
+            background: linear-gradient(135deg, #0d2d5f 0%, #1563df 55%, #1e84ff 100%);
+            padding: 48px 0 40px;
+            text-align: center;
+        }
+
+        .listings-hero .hero-kicker {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border-radius: 999px;
+            padding: 6px 16px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #b8d7ff;
+            margin-bottom: 14px;
+        }
+
+        .listings-hero h1 {
+            color: #ffffff;
+            font-size: clamp(26px, 4vw, 40px);
+            font-weight: 800;
+            margin: 0 0 10px;
+            line-height: 1.2;
+        }
+
+        .listings-hero p {
+            color: rgba(255,255,255,0.8);
+            font-size: 16px;
+            margin: 0;
+        }
+
+        /* ── Tab bar ── */
+        .listings-tabs-wrap {
+            background: #f4f7fb;
+            border-bottom: 1px solid #dce4ef;
+            padding: 0;
+            position: sticky;
+            top: 78px;
+            z-index: 100;
+        }
+
+        .listings-tabs {
+            display: flex;
+            gap: 0;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0 16px;
+        }
+
+        .listings-tab-btn {
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            padding: 16px 28px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #5a6a82;
+            cursor: pointer;
+            transition: color .18s, border-color .18s;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .listings-tab-btn:hover {
+            color: #1563df;
+        }
+
+        .listings-tab-btn.active {
+            color: #1563df;
+            border-bottom-color: #1563df;
+        }
+
+        .listings-tab-btn .tab-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #c8d6ea;
+            transition: background .18s;
+        }
+
+        .listings-tab-btn.active .tab-dot {
+            background: #1563df;
+        }
+
+        /* ── iFrame section ── */
+        .listings-iframe-section {
+            background: #f4f7fb;
+            padding: 24px 0 40px;
+        }
+
+        .listings-iframe-panel {
+            display: none;
+        }
+
+        .listings-iframe-panel.active {
+            display: block;
+        }
+
+        .listings-iframe-shell {
+            border-radius: 16px;
+            overflow: hidden;
+            background: #ffffff;
+            border: 1px solid #dce4ef;
+            box-shadow: 0 8px 32px rgba(21, 99, 223, 0.08);
+        }
+
+        .listings-iframe-shell iframe {
+            display: block;
+            width: 100%;
+            height: 82vh;
+            min-height: 600px;
+            border: none;
+        }
+
+        /* Loading state */
+        .iframe-loading-overlay {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 82vh;
+            min-height: 600px;
+            background: #f8fafd;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .iframe-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #dce4ef;
+            border-top-color: #1563df;
+            border-radius: 50%;
+            animation: spin .8s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .iframe-loading-text {
+            color: #5a6a82;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* ── HAR disclosure ── */
+        .har-disclosure {
+            background: #fffbf1;
+            border-top: 1px solid #ead7ab;
+            padding: 14px 0;
+        }
+
+        .har-disclosure p {
+            margin: 0;
+            font-size: 12px;
+            color: #7a6435;
+            text-align: center;
+        }
+
+        .har-disclosure a {
+            color: #1563df;
+        }
+
+        @media (max-width: 767px) {
+            .listings-tab-btn {
+                padding: 14px 16px;
+                font-size: 13px;
+            }
+
+            .listings-iframe-shell iframe {
+                height: 75vh;
+                min-height: 480px;
+            }
+
+            .iframe-loading-overlay {
+                height: 75vh;
+                min-height: 480px;
+            }
+        }
+    </style>
+</head>
+
+<body class="body">
+
+    <!-- preload -->
+    <div class="preload preload-container">
+        <div class="preload-logo">
+            <div class="spinner"></div>
+            <span class="icon icon-villa-fill"></span>
+        </div>
+    </div>
+    <!-- /preload -->
+
+    <div id="wrapper">
+        <div id="pagee" class="clearfix">
+
+            <!-- Main Header -->
+            <header id="header" class="main-header header-fixed fixed-header">
+                <!-- Header Lower -->
+                <div class="header-lower">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="inner-header">
+                                <div class="inner-header-left">
+                                    <div class="logo-box flex">
+                                        <div class="logo"><a href="index.html"><img src="images/logo.png"
+                                                    alt="logo" width="83" height="24"></a></div>
+                                    </div>
+                                    <div class="nav-outer flex align-center">
+                                        <!-- Main Menu -->
+                                        <nav class="main-menu show navbar-expand-md">
+                                            <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
+                                                <ul class="navigation clearfix">
+                                                    <li><a href="index.html">Home</a></li>
+                                                    <li><a href="index.html#why-nfrg">Why NFRG</a></li>
+                                                    <li><a href="https://nfrg-web-app.vercel.app/" target="_blank" rel="noopener noreferrer">Mentorship</a></li>
+                                                    <li class="current"><a href="har-listings.html">Listings</a></li>
+                                                    <li><a href="index.html#leadership">Leadership</a></li>
+                                                    <li><a href="index.html#insights">Insights</a></li>
+                                                    <li><a href="index.html#contact">Contact</a></li>
+                                                </ul>
+                                            </div>
+                                        </nav>
+                                        <!-- Main Menu End-->
+                                    </div>
+                                </div>
+                                <div class="inner-header-right header-account">
+                                    <a href="index.html#contact" class="tf-btn btn-line btn-login">
+                                        Contact Us
+                                    </a>
+                                    <div class="flat-bt-top">
+                                        <a class="tf-btn primary" href="https://nfrg-web-app.vercel.app/" target="_blank" rel="noopener noreferrer">
+                                            <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.5 2.5C10.5 2.5 14.5 4.5 14.5 10C14.5 15.5 10.5 17.5 10.5 17.5M10.5 2.5C10.5 2.5 6.5 4.5 6.5 10C6.5 15.5 10.5 17.5 10.5 17.5M10.5 2.5V17.5M4.5 8H16.5M4.5 12H16.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            Join Mentorship
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="mobile-nav-toggler mobile-button"><span></span></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Header Lower -->
+
+                <!-- Mobile Menu  -->
+                <div class="close-btn"><span class="icon flaticon-cancel-1"></span></div>
+                <div class="mobile-menu">
+                    <div class="menu-backdrop"></div>
+                    <nav class="menu-box">
+                        <div class="nav-logo"><a href="index.html"><img src="images/logo.png" alt="nav-logo" width="87" height="22"></a></div>
+                        <div class="bottom-canvas">
+                            <div class="login-box flex align-center">
+                                <a href="##modalLogin" data-bs-toggle="modal">Login</a>
+                                <span>/</span>
+                                <a href="##modalRegister" data-bs-toggle="modal">Register</a>
+                            </div>
+                            <div class="menu-outer"></div>
+                            <div class="button-mobi-sell">
+                                <a class="tf-btn primary" href="https://nfrg-web-app.vercel.app/" target="_blank" rel="noopener noreferrer">Join Mentorship</a>
+                            </div>
+                            <div class="mobi-icon-box">
+                                <div class="box d-flex align-items-center">
+                                    <span class="icon icon-phone2"></span>
+                                    <div>
+                                        <div>Cell: <a href="tel:8329692391">832-969-2391</a></div>
+                                        <div>Main LPT Office: <a href="tel:8773662313">877-366-2313</a></div>
+                                    </div>
+                                </div>
+                                <div class="box d-flex align-items-center">
+                                    <span class="icon icon-mail"></span>
+                                    <div>
+                                        <div>General: <a href="mailto:james.scott@navyfellasrealtygroup.com">james.scott@navyfellasrealtygroup.com</a></div>
+                                        <div>Support &amp; Billing: <a href="mailto:ashley.henkis@navyfellasrealtygroup.com">ashley.henkis@navyfellasrealtygroup.com</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <!-- End Mobile Menu -->
+
+            </header>
+            <!-- End Main Header -->
+
+            <!-- Page Hero -->
+            <section class="listings-hero">
+                <div class="container">
+                    <h1>Houston Property Listings</h1>
+                    <p>Active listings, recently sold homes, and a full property search — all in one place.</p>
+                </div>
+            </section>
+            <!-- End Page Hero -->
+
+            <!-- Tab Bar -->
+            <div class="listings-tabs-wrap">
+                <div class="listings-tabs" role="tablist">
+                    <button class="listings-tab-btn active"
+                            role="tab"
+                            aria-selected="true"
+                            aria-controls="panel-active"
+                            data-panel="panel-active"
+                            data-src="https://www.har.com/idx/mls/listing?sitetype=aws&cid=567537&mlsorgid=1&allmls=n">
+                        <span class="tab-dot"></span>
+                        Active Listings
+                    </button>
+                    <button class="listings-tab-btn"
+                            role="tab"
+                            aria-selected="false"
+                            aria-controls="panel-sold"
+                            data-panel="panel-sold"
+                            data-src="https://www.har.com/idx/mls/sold/listing?sitetype=aws&cid=567537&allmls=n&mlsorgid=1">
+                        <span class="tab-dot"></span>
+                        Sold Listings
+                    </button>
+                    <button class="listings-tab-btn"
+                            role="tab"
+                            aria-selected="false"
+                            aria-controls="panel-search"
+                            data-panel="panel-search"
+                            data-src="https://www.har.com/idx/mls/search?sitetype=aws&cid=567537&mlsorgid=1&allmls=n&for_sale=1">
+                        <span class="tab-dot"></span>
+                        Search Listings
+                    </button>
+                </div>
+            </div>
+            <!-- End Tab Bar -->
+
+            <!-- iFrame Section -->
+            <section class="listings-iframe-section">
+                <div class="container-fluid px-3 px-md-4">
+
+                    <!-- Panel: Active Listings -->
+                    <div id="panel-active" class="listings-iframe-panel active" role="tabpanel">
+                        <div class="listings-iframe-shell">
+                            <iframe
+                                id="iframe-active"
+                                src="https://www.har.com/idx/mls/listing?sitetype=aws&cid=567537&mlsorgid=1&allmls=n"
+                                title="Active Property Listings – Navy Fellas Realty Group"
+                                loading="lazy"
+                                allowfullscreen
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Panel: Sold Listings -->
+                    <div id="panel-sold" class="listings-iframe-panel" role="tabpanel">
+                        <div class="listings-iframe-shell">
+                            <iframe
+                                id="iframe-sold"
+                                title="Sold Property Listings – Navy Fellas Realty Group"
+                                loading="lazy"
+                                allowfullscreen
+                                referrerpolicy="no-referrer-when-downgrade"
+                                data-src="https://www.har.com/idx/mls/sold/listing?sitetype=aws&cid=567537&allmls=n&mlsorgid=1">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Panel: Search -->
+                    <div id="panel-search" class="listings-iframe-panel" role="tabpanel">
+                        <div class="listings-iframe-shell">
+                            <iframe
+                                id="iframe-search"
+                                title="Property Search – Navy Fellas Realty Group"
+                                loading="lazy"
+                                allowfullscreen
+                                referrerpolicy="no-referrer-when-downgrade"
+                                data-src="https://www.har.com/idx/mls/search?sitetype=aws&cid=567537&mlsorgid=1&allmls=n&for_sale=1">
+                            </iframe>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <!-- End iFrame Section -->
+
+            <!-- HAR Disclosure -->
+            <div class="har-disclosure">
+                <div class="container">
+                    <p>Listing data is provided by the Houston Association of Realtors&reg; (HAR). Information deemed reliable but not guaranteed.
+                    &nbsp;|&nbsp;
+                    <a href="https://www.har.com/mhf/terms/dispBrokerInfo?sitetype=aws&cid=567537" target="_blank" rel="noopener noreferrer">TREC Information About Brokerage Services</a>
+                    &nbsp;|&nbsp; Brokered by LPT Realty LLC.</p>
+                </div>
+            </div>
+            <!-- End HAR Disclosure -->
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="top-footer">
+                    <div class="container">
+                        <div class="content-footer-top">
+                            <div class="footer-logo"><a href="index.html"><img src="images/logo.png" alt="logo" width="166" height="48"></a></div>
+                            <div class="wd-social">
+                                <span>Follow Us:</span>
+                                <ul class="list-social d-flex align-items-center">
+                                    <li>
+                                        <a href="https://linktr.ee/navyfellas?utm_source=linktree_profile_share&ltsid=17209520-1b14-4aa6-bf9e-367c66a20ea1" class="box-icon w-40 social" target="_blank" rel="noopener" aria-label="Instagram">
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.99812 4.66567C5.71277 4.66567 4.66383 5.71463 4.66383 7C4.66383 8.28537 5.71277 9.33433 6.99812 9.33433C8.28346 9.33433 9.3324 8.28537 9.3324 7C9.3324 5.71463 8.28346 4.66567 6.99812 4.66567ZM13.9992 7C13.9992 6.03335 14.008 5.07545 13.9537 4.11055C13.8994 2.98979 13.6437 1.99512 12.8242 1.17556C12.0029 0.35426 11.01 0.100338 9.88927 0.0460516C8.92263 -0.00823506 7.96475 0.000520879 6.99987 0.000520879C6.03323 0.000520879 5.07536 -0.00823506 4.11047 0.0460516C2.98973 0.100338 1.99508 0.356011 1.17554 1.17556C0.354253 1.99687 0.100336 2.98979 0.0460508 4.11055C-0.00823491 5.0772 0.00052087 6.0351 0.00052087 7C0.00052087 7.9649 -0.00823491 8.92455 0.0460508 9.88945C0.100336 11.0102 0.356004 12.0049 1.17554 12.8244C1.99683 13.6457 2.98973 13.8997 4.11047 13.9539C5.07711 14.0082 6.03499 13.9995 6.99987 13.9995C7.9665 13.9995 8.92438 14.0082 9.88927 13.9539C11.01 13.8997 12.0047 13.644 12.8242 12.8244C13.6455 12.0031 13.8994 11.0102 13.9537 9.88945C14.0097 8.92455 13.9992 7.96665 13.9992 7ZM6.99812 10.5917C5.01056 10.5917 3.40651 8.98759 3.40651 7C3.40651 5.01241 5.01056 3.40832 6.99812 3.40832C8.98567 3.40832 10.5897 5.01241 10.5897 7C10.5897 8.98759 8.98567 10.5917 6.99812 10.5917ZM10.7368 4.10004C10.2728 4.10004 9.89802 3.72529 9.89802 3.26122C9.89802 2.79716 10.2728 2.42241 10.7368 2.42241C11.2009 2.42241 11.5756 2.79716 11.5756 3.26122C11.5758 3.37142 11.5542 3.48056 11.5121 3.58239C11.47 3.68422 11.4082 3.77675 11.3303 3.85467C11.2523 3.93258 11.1598 3.99437 11.058 4.03647C10.9562 4.07858 10.847 4.10018 10.7368 4.10004Z" fill="white" />
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner-footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="footer-cl-1">
+                                    <p class="text-variant-2">Navy Fellas Realty Group - Bringing military-grade discipline and
+                                        unmatched responsiveness to every real estate transaction.</p>
+                                    <ul class="mt-12">
+                                        <li class="mt-12 d-flex align-items-center gap-8">
+                                            <i class="icon icon-mapPinLine fs-20 text-variant-2"></i>
+                                            <p class="text-white">14150 Huffmeister Rd Suite 125, Cypress, TX 77429</p>
+                                        </li>
+                                        <li class="mt-12 d-flex align-items-center gap-8">
+                                            <i class="icon icon-phone2 fs-20 text-variant-2"></i>
+                                            <div class="text-white caption-1">
+                                                <div><a href="tel:8329692391" class="text-white caption-1">Cell: 832-969-2391</a></div>
+                                                <div><a href="tel:8773662313" class="text-white caption-1">Main LPT Office: 877-366-2313</a></div>
+                                            </div>
+                                        </li>
+                                        <li class="mt-12 d-flex align-items-center gap-8">
+                                            <i class="icon icon-mail fs-20 text-variant-2"></i>
+                                            <div class="text-white">
+                                                <div><a href="mailto:james.scott@navyfellasrealtygroup.com" class="text-white">General: james.scott@navyfellasrealtygroup.com</a></div>
+                                                <div><a href="mailto:ashley.henkis@navyfellasrealtygroup.com" class="text-white">Support &amp; Billing: ashley.henkis@navyfellasrealtygroup.com</a></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6">
+                                <div class="footer-cl-2 footer-col-block">
+                                    <div class="fw-7 text-white footer-heading-mobile">For Agents</div>
+                                    <div class="tf-collapse-content">
+                                        <ul class="mt-10 navigation-menu-footer">
+                                            <li><a href="index.html#our-service" class="caption-1 text-variant-2">Agent Opportunities</a></li>
+                                            <li><a href="index.html#webinar" class="caption-1 text-variant-2">Free Webinar</a></li>
+                                            <li><a href="index.html#blog" class="caption-1 text-variant-2">Training Resources</a></li>
+                                            <li><a href="index.html#faq" class="caption-1 text-variant-2">FAQs</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6">
+                                <div class="footer-cl-3 footer-col-block">
+                                    <div class="fw-7 text-white footer-heading-mobile">For Clients</div>
+                                    <div class="tf-collapse-content">
+                                        <ul class="mt-10 navigation-menu-footer">
+                                            <li><a href="har-listings.html" class="caption-1 text-variant-2">Browse Listings</a></li>
+                                            <li><a href="index.html#pricing" class="caption-1 text-variant-2">Our Services</a></li>
+                                            <li><a href="index.html#about" class="caption-1 text-variant-2">About Us</a></li>
+                                            <li><a href="index.html#contact" class="caption-1 text-variant-2">Contact Us</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="footer-cl-4 footer-col-block">
+                                    <div class="fw-7 text-white footer-heading-mobile">Newsletter</div>
+                                    <div class="tf-collapse-content">
+                                        <p class="mt-12 text-variant-2">Your Weekly/Monthly Dose of Knowledge and Inspiration</p>
+                                        <form class="mt-12" id="subscribe-form" action="#" method="post" accept-charset="utf-8" data-mailchimp="true">
+                                            <div id="subscribe-content">
+                                                <input type="email" name="email-form" id="subscribe-email" placeholder="Your email address" />
+                                                <button type="button" id="subscribe-button" class="button-subscribe">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M5.00044 9.99935L2.72461 2.60352C8.16867 4.18685 13.3024 6.68806 17.9046 9.99935C13.3027 13.3106 8.16921 15.8118 2.72544 17.3952L5.00044 9.99935ZM5.00044 9.99935H11.2504" stroke="#1563DF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            <div id="subscribe-msg"></div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-footer">
+                    <div class="container">
+                        <div class="content-footer-bottom">
+                            <div class="copyright">©2025 NFRG. All Rights Reserved. Developed by Ragy Quiteque</div>
+                            <div class="caption-1 text-variant-2 mt-2">Brokered by LPT Realty LLC.</div>
+                            <ul class="menu-bottom">
+                                <li><a href="index.html#our-service">Terms of Service</a></li>
+                                <li><a href="index.html#pricing">Privacy Policy</a></li>
+                                <li><a href="index.html#contact">Cookie Policy</a></li>
+                                <li><a href="https://www.har.com/mhf/terms/dispBrokerInfo?sitetype=aws&cid=567537" target="_blank" rel="noopener noreferrer">TREC Information About Brokerage Services</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- end footer -->
+
+        </div>
+        <!-- /#pagee -->
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- go top -->
+    <div class="progress-wrap">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+                style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 286.138;">
+            </path>
+        </svg>
+    </div>
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="js/carousel.js"></script>
+    <script type="text/javascript" src="js/plugin.js"></script>
+    <script type="text/javascript" src="js/jquery.nice-select.min.js"></script>
+    <script type="text/javascript" src="js/rangle-slider.js"></script>
+    <script type="text/javascript" src="js/countto.js"></script>
+    <script type="text/javascript" src="js/shortcodes.js"></script>
+    <script type="text/javascript" src="js/animation_heading.js"></script>
+    <script type="text/javascript" src="js/lazysize.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <!-- Tab switching logic -->
+    <script>
+        (function () {
+            var tabs = document.querySelectorAll('.listings-tab-btn');
+            var panels = document.querySelectorAll('.listings-iframe-panel');
+
+            function activateTab(targetId) {
+                tabs.forEach(function (t) {
+                    var match = t.getAttribute('data-panel') === targetId;
+                    t.classList.toggle('active', match);
+                    t.setAttribute('aria-selected', String(match));
+                });
+                panels.forEach(function (p) { p.classList.remove('active'); });
+                var targetPanel = document.getElementById(targetId);
+                if (targetPanel) {
+                    targetPanel.classList.add('active');
+                    var panelIframe = targetPanel.querySelector('iframe[data-src]');
+                    if (panelIframe) {
+                        panelIframe.src = panelIframe.getAttribute('data-src');
+                        panelIframe.removeAttribute('data-src');
+                    }
+                }
+            }
+
+            tabs.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    activateTab(btn.getAttribute('data-panel'));
+                });
+            });
+
+            // Support deep-link via URL hash e.g. har-listings.html#panel-sold
+            var hash = window.location.hash.replace('#', '');
+            if (hash && document.getElementById(hash)) {
+                activateTab(hash);
+            }
+        })();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.har.com)",
+      "Bash(npm install)"
+    ]
+  }
+}
