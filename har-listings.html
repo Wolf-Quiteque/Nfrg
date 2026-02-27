@@ -230,6 +230,85 @@
         }
 
         /* ── HAR disclosure ── */
+        /* ── TREC / Texas Consumer Protection Notice ── */
+        .trec-notice-bar {
+            background: linear-gradient(180deg, #fffaf0 0%, #ffffff 100%);
+            border-bottom: 1px solid #ead7ab;
+            padding: 28px 0;
+        }
+
+        .trec-notice-card {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            background: #ffffff;
+            border: 1px solid #ead7ab;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(125, 93, 22, 0.10);
+            padding: 20px 28px;
+        }
+
+        .trec-notice-left { flex: 1; min-width: 0; }
+
+        .trec-notice-badge {
+            display: inline-block;
+            background: #fff8e8;
+            border: 1px solid #f0d9a2;
+            border-radius: 999px;
+            padding: 4px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #b4861f;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 6px;
+        }
+
+        .trec-notice-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a2540;
+            margin: 0 0 4px;
+        }
+
+        .trec-notice-desc {
+            font-size: 13px;
+            color: #5a6a82;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .trec-notice-right { flex-shrink: 0; }
+
+        .trec-notice-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #b4861f;
+            color: #ffffff !important;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background .18s, transform .18s;
+            white-space: nowrap;
+        }
+
+        .trec-notice-btn:hover {
+            background: #8f6a12;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .trec-notice-card { padding: 18px; }
+            .trec-notice-right { width: 100%; }
+            .trec-notice-btn { width: 100%; justify-content: center; }
+        }
+
+        /* ── HAR bottom disclosure ── */
         .har-disclosure {
             background: #fffbf1;
             border-top: 1px solid #ead7ab;
@@ -380,6 +459,31 @@
                 </div>
             </section>
             <!-- End Page Hero -->
+
+            <!-- Texas Consumer Protection Notice -->
+            <div class="trec-notice-bar">
+                <div class="container">
+                    <div class="trec-notice-card">
+                        <div class="trec-notice-left">
+                            <div class="trec-notice-badge">Texas Required Disclosure</div>
+                            <div class="trec-notice-title">Information About Brokerage Services</div>
+                            <p class="trec-notice-desc">Texas law requires license holders to disclose how they represent buyers, sellers, and tenants. Brokered by <strong>LPT Realty, LLC</strong> &middot; License No. 9012763-BB.</p>
+                        </div>
+                        <div class="trec-notice-right">
+                            <a href="https://www.har.com/mhf/terms/dispBrokerInfo?sitetype=aws&cid=567537"
+                               target="_blank" rel="noopener noreferrer"
+                               class="trec-notice-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 2V10M8 10L5 7M8 10L11 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M3 13H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                                Download TREC Disclosure (PDF)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Texas Consumer Protection Notice -->
 
             <!-- Tab Bar -->
             <div class="listings-tabs-wrap">

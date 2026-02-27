@@ -327,6 +327,136 @@
             white-space: nowrap;
         }
 
+        /* ── IABS detailed card (inside disclosure strip) ── */
+        .nfrg-iabs-card {
+            margin-top: 16px;
+            border-radius: 18px;
+            border: 1px solid #ead7ab;
+            background: #ffffff;
+            box-shadow: 0 8px 32px rgba(125, 93, 22, 0.10);
+            padding: 28px 48px 28px 32px;
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
+        }
+
+        .nfrg-iabs-left { flex: 1; min-width: 0; }
+
+        .nfrg-iabs-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: #fff8e8;
+            border: 1px solid #f0d9a2;
+            border-radius: 999px;
+            padding: 5px 14px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #b4861f;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+
+        .nfrg-iabs-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a2540;
+            margin: 0 0 8px;
+        }
+
+        .nfrg-iabs-desc {
+            font-size: 14px;
+            color: #5a6a82;
+            margin: 0 0 14px;
+            line-height: 1.6;
+        }
+
+        .nfrg-iabs-points {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nfrg-iabs-points li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: #3a4a60;
+            line-height: 1.5;
+        }
+
+        .nfrg-iabs-points li svg { flex-shrink: 0; margin-top: 2px; }
+
+        .nfrg-iabs-broker {
+            margin: 0;
+            font-size: 12px;
+            color: #7a6435;
+            background: #fffbf1;
+            border: 1px solid #f0ddb1;
+            border-radius: 8px;
+            padding: 8px 12px;
+        }
+
+        .nfrg-iabs-broker a { color: #1563df; text-decoration: none; }
+
+        .nfrg-iabs-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex-shrink: 0;
+            width: 220px;
+            gap: 12px;
+        }
+
+        .nfrg-iabs-cta-label {
+            font-size: 13px;
+            color: #5a6a82;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .nfrg-iabs-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #b4861f;
+            color: #ffffff !important;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background .18s, transform .18s;
+            white-space: nowrap;
+        }
+
+        .nfrg-iabs-btn:hover { background: #8f6a12; transform: translateY(-1px); }
+
+        .nfrg-iabs-fine {
+            font-size: 11px;
+            color: #9aab99;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .nfrg-iabs-card {
+                flex-direction: column;
+                padding: 22px 18px;
+            }
+            .nfrg-iabs-right {
+                width: 100%;
+                border-top: 1px solid #f0ddb1;
+                padding-top: 20px;
+            }
+        }
+
         .nfrg-lpt-section {
             padding: 56px 0;
             background: radial-gradient(circle at 20% 20%, #f7f4ee 0%, #ffffff 60%);
@@ -672,6 +802,62 @@
                         <div class="nfrg-disclosure-action">
                             <a class="tf-btn btn-line" href="https://content.harstatic.com/pdf/TREC_CPN.pdf"
                                 target="_blank" rel="noopener noreferrer">View Notice</a>
+                        </div>
+                    </div>
+                    <div class="nfrg-iabs-card">
+                        <div class="nfrg-iabs-left">
+                            <div class="nfrg-iabs-badge">
+                                <svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 1.5L11.163 6.315L16.5 7.095L12.75 10.755L13.6875 16.125L9 13.5L4.3125 16.125L5.25 10.755L1.5 7.095L6.837 6.315L9 1.5Z" stroke="#b4861f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Texas Required Disclosure
+                            </div>
+                            <h4 class="nfrg-iabs-title">Information About Brokerage Services</h4>
+                            <p class="nfrg-iabs-desc">Texas law requires all real estate license holders to provide this notice to prospective buyers, tenants, sellers, and landlords.</p>
+                            <ul class="nfrg-iabs-points">
+                                <li>
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 7L5.5 10L11.5 4" stroke="#b4861f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    A <strong>Broker</strong> is responsible for all brokerage activities, including acts performed by sponsored sales agents.
+                                </li>
+                                <li>
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 7L5.5 10L11.5 4" stroke="#b4861f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    A <strong>Sales Agent</strong> must be sponsored by a broker and works with clients on the broker's behalf.
+                                </li>
+                                <li>
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 7L5.5 10L11.5 4" stroke="#b4861f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    Brokers must put the client's interests above all others, including the broker's own interests.
+                                </li>
+                                <li>
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 7L5.5 10L11.5 4" stroke="#b4861f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    <strong>Written agreements</strong> are required before showing residential property to a prospective buyer.
+                                </li>
+                            </ul>
+                            <p class="nfrg-iabs-broker">
+                                Brokered by <strong>LPT Realty, LLC</strong> &nbsp;|&nbsp; License No. 9012763-BB &nbsp;|&nbsp;
+                                <a href="mailto:Support@lptrealty.com">Support@lptrealty.com</a> &nbsp;|&nbsp;
+                                <a href="tel:8773662213">(877) 366-2213</a>
+                            </p>
+                        </div>
+                        <div class="nfrg-iabs-right">
+                            <div>
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="48" height="48" rx="12" fill="#fff8e8"/>
+                                    <path d="M14 12H30L34 16V36H14V12Z" stroke="#b4861f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M30 12V16H34" stroke="#b4861f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M19 22H29M19 26H29M19 30H25" stroke="#b4861f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <p class="nfrg-iabs-cta-label">Download the full official TREC disclosure form (PDF)</p>
+                            <a href="https://www.har.com/mhf/terms/dispBrokerInfo?sitetype=aws&cid=567537"
+                               target="_blank" rel="noopener noreferrer"
+                               class="nfrg-iabs-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 2V10M8 10L5 7M8 10L11 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M3 13H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                                Download TREC Disclosure (PDF)
+                            </a>
+                            <p class="nfrg-iabs-fine">This notice is provided for information purposes only and does not create an obligation to use our services.</p>
                         </div>
                     </div>
                 </div>
