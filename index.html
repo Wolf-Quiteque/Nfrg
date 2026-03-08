@@ -4573,7 +4573,6 @@
     <script type="text/javascript" src="js/animation_heading.js"></script>
     <script type="text/javascript" src="js/lazysize.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>
     <script>
         (function () {
             var iframe = document.getElementById("nfrgIntroIframe");
@@ -4581,44 +4580,17 @@
             var playOverlay = document.getElementById("nfrgPlayOverlay");
             if (!iframe || !videoBlock || !playOverlay) return;
 
-            var player = null;
-            var hasInit = false;
             var hasPlayed = false;
-
-            function getPlayer() {
-                if (hasInit) return player;
-                hasInit = true;
-                if (window.Stream) {
-                    player = window.Stream(iframe);
-                }
-                return player;
-            }
 
             function startPlayWithSound() {
                 if (hasPlayed) return;
                 hasPlayed = true;
                 playOverlay.classList.add("is-playing");
-                var currentPlayer = getPlayer();
-                if (currentPlayer) {
-                    if (typeof currentPlayer.unmute === "function") currentPlayer.unmute();
-                    if (typeof currentPlayer.play === "function") currentPlayer.play().catch(function () { });
-                }
+                // Reload iframe without muted — user gesture allows browser to play with sound
+                iframe.src = iframe.src.replace(/[&?]?muted=true/g, "");
             }
 
             playOverlay.addEventListener("click", startPlayWithSound);
-
-            var observer = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting && entry.intersectionRatio > 0.45) {
-                        var currentPlayer = getPlayer();
-                        if (currentPlayer && typeof currentPlayer.play === "function") {
-                            currentPlayer.play().catch(function () { });
-                        }
-                    }
-                });
-            }, { threshold: [0.45, 0.7] });
-
-            observer.observe(videoBlock);
         })();
     </script>
 
