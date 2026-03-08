@@ -81,39 +81,41 @@
             border: none;
         }
 
-        .nfrg-mute-toggle {
+        .nfrg-play-overlay {
             position: absolute;
-            left: 16px;
-            bottom: 16px;
-            z-index: 3;
-            border: 0;
-            border-radius: 999px;
-            padding: 10px 14px;
-            background: rgba(6, 23, 53, 0.88);
-            color: #ffffff;
-            font-size: 13px;
-            font-weight: 700;
-            display: inline-flex;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            display: flex;
             align-items: center;
-            gap: 8px;
-            transition: all .2s ease;
+            justify-content: center;
+            z-index: 3;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
         }
 
-        .nfrg-mute-toggle:hover {
-            background: rgba(6, 23, 53, 0.98);
+        .nfrg-play-overlay.is-playing {
+            opacity: 0;
+            pointer-events: none;
         }
 
-        .nfrg-mute-dot {
-            width: 9px;
-            height: 9px;
+        .nfrg-play-btn {
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 50%;
-            background: #ff5353;
-            box-shadow: 0 0 10px rgba(255, 83, 83, 0.5);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+            backdrop-filter: blur(4px);
         }
 
-        .nfrg-mute-toggle:not(.is-muted) .nfrg-mute-dot {
-            background: #46d67e;
-            box-shadow: 0 0 10px rgba(70, 214, 126, 0.5);
+        .nfrg-play-btn:hover {
+            background: rgba(255, 255, 255, 0.28);
+            transform: scale(1.08);
         }
 
         @media (max-width: 767px) {
@@ -122,11 +124,9 @@
                 border-radius: 18px;
             }
 
-            .nfrg-mute-toggle {
-                left: 10px;
-                right: 10px;
-                bottom: 10px;
-                justify-content: center;
+            .nfrg-play-btn {
+                width: 64px;
+                height: 64px;
             }
         }
 
@@ -3621,10 +3621,13 @@
                             loading="lazy"
                             allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
                             allowfullscreen="true"></iframe>
-                        <button type="button" id="nfrgMuteToggle" class="nfrg-mute-toggle is-muted" aria-pressed="false">
-                            <span class="nfrg-mute-dot"></span>
-                            <span class="nfrg-mute-text">Muted: Click for sound</span>
-                        </button>
+                        <div class="nfrg-play-overlay" id="nfrgPlayOverlay">
+                            <button type="button" class="nfrg-play-btn" id="nfrgPlayBtn" aria-label="Play video with sound">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="36" height="36" aria-hidden="true">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -4575,19 +4578,12 @@
         (function () {
             var iframe = document.getElementById("nfrgIntroIframe");
             var videoBlock = document.getElementById("nfrgIntroVideoBlock");
-            var muteButton = document.getElementById("nfrgMuteToggle");
-            if (!iframe || !videoBlock || !muteButton) return;
+            var playOverlay = document.getElementById("nfrgPlayOverlay");
+            if (!iframe || !videoBlock || !playOverlay) return;
 
             var player = null;
-            var muted = true;
             var hasInit = false;
-
-            function setMuteLabel() {
-                var label = muteButton.querySelector(".nfrg-mute-text");
-                muteButton.classList.toggle("is-muted", muted);
-                muteButton.setAttribute("aria-pressed", String(!muted));
-                if (label) label.textContent = muted ? "Muted: Click for sound" : "Sound on: Click to mute";
-            }
+            var hasPlayed = false;
 
             function getPlayer() {
                 if (hasInit) return player;
@@ -4598,38 +4594,31 @@
                 return player;
             }
 
-            function playVideo() {
+            function startPlayWithSound() {
+                if (hasPlayed) return;
+                hasPlayed = true;
+                playOverlay.classList.add("is-playing");
                 var currentPlayer = getPlayer();
-                if (currentPlayer && typeof currentPlayer.play === "function") {
-                    currentPlayer.play().catch(function () { });
+                if (currentPlayer) {
+                    if (typeof currentPlayer.unmute === "function") currentPlayer.unmute();
+                    if (typeof currentPlayer.play === "function") currentPlayer.play().catch(function () { });
                 }
             }
 
-            function setMutedState(nextMuted) {
-                muted = nextMuted;
-                setMuteLabel();
-                var currentPlayer = getPlayer();
-                if (!currentPlayer) return;
-                if (muted && typeof currentPlayer.mute === "function") currentPlayer.mute();
-                if (!muted && typeof currentPlayer.unmute === "function") currentPlayer.unmute();
-            }
-
-            muteButton.addEventListener("click", function () {
-                setMutedState(!muted);
-                playVideo();
-            });
+            playOverlay.addEventListener("click", startPlayWithSound);
 
             var observer = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
                     if (entry.isIntersecting && entry.intersectionRatio > 0.45) {
-                        playVideo();
+                        var currentPlayer = getPlayer();
+                        if (currentPlayer && typeof currentPlayer.play === "function") {
+                            currentPlayer.play().catch(function () { });
+                        }
                     }
                 });
             }, { threshold: [0.45, 0.7] });
 
             observer.observe(videoBlock);
-            setMuteLabel();
-            setMutedState(true);
         })();
     </script>
 
